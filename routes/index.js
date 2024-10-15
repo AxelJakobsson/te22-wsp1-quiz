@@ -17,6 +17,14 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get("/om", (req, res) => {
+  const name = req.query.name
+  res.render('om.njk', {
+    title: 'Om',
+    message: 'Om den här sidan'
+  })
+})
+
 router.get("/watch", (req, res) => {
   const movieID = req.query.v
   console.log(movieID)

@@ -1,0 +1,12 @@
+{% extends "layout.njk" %}
+{% block content %}
+
+<main class="container">
+    <h1>{{ title }}</h1>
+
+    <form action="/quiz/questions">
+        <input type="submit" value="Fortsätt">
+    </form>
+</main>
+
+{% endblock %}
