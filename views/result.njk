@@ -1,0 +1,13 @@
+{% extends "layout.njk" %}
+{% block content %}
+<main class="container">
+  <h1>{{message}}</h1>
+
+  {% include "components/result-component.njk" %}
+
+
+    
+
+    <p><a href="/quiz/">Gör quizzet igen</a></p>
+</main>
+{% endblock %}

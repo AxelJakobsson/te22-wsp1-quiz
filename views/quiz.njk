@@ -2,11 +2,11 @@
 {% block content %}
 
 <main class="container">
-    <h1>{{ title }}</h1>
+    <h1 class="center">{{ message }}</h1>
 
-    <form action="/quiz/questions">
-        <input type="submit" value="Fortsätt">
-    </form>
+        <form action="/quiz/questions">
+            <input type="submit" value="Starta quiz" id="startQuiz">
+        </form>
 </main>
 
 {% endblock %}

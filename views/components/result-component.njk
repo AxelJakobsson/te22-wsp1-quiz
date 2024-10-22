@@ -1,0 +1,20 @@
+{% set correctAnswers = 0 %}
+
+{% for result in results %}
+
+<p>Fråga {{result.questionId.slice(1)}}: 
+{% if result.correct %}
+    korrekt!
+{% else %}
+    fel.
+{% endif %}
+
+Du svarade {{result.answer}}    
+
+</p> 
+{% endfor %}
+
+<br>
+<p>Ditt resultat: {{correctAmount}}/{{totalAmount}}</p>
+
+

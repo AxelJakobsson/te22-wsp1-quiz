@@ -1,50 +1,76 @@
 import express from "express"
 const router = express.Router()
 
-
 router.get("/", (req, res) => {
-    res.render('quiz.njk', {
-        title: "Quiz",
-    })
-})
-
-router.get("/questions", (req, res) => {
-    res.render("questions.njk", {
-        message: "Frågor",
-        questions
+  res.render("quiz.njk", {
+    message: "Quiz"
     })
 })
 
 const questions = [
-    {
-        id: "q1",
-        text: "Hur många däck har en bil?",
-        answers: [4, 6, 8, 5],
-        correctAnswer: 4
-    },
-
-    {
-        id: "q2",
-        text: "Hur många ben har en elefant?",
-        answers: [4, 6, 7, 2],
-        correctAnswer: 6,
-    }        
+  {
+    id: "q1",
+    text: "Hur många hjul har en bil?",
+    answers: [3, 12, 5, 4],
+    correctAnswer: 4
+  },
+  {
+    id: "q2",
+    text: "Hur många ben har en gnu?",
+    answers: ["två", "sju", "tre", "fyra"],
+    correctAnswer: "fyra",
+  },
+  {
+    id: "q3",
+    text: "Hur många ben har en trebent stol",
+    answers: ["två", "sju", "tre", "fyra"],
+    correctAnswer: "tre",
+  },
+  {
+    id: "q4",
+    text: "Hur många ben har en gnu?",
+    answers: ["två", "sju", "tre", "fyra"],
+    correctAnswer: "fyra",
+  }
 ]
 
-router.post("/end", (req, res) => {
-    const answers = req.body
-    console.log(answers)
-    questions.forEach(question=> {
-        const answer = answers[question.id]
-        if (answer == question.correctAnswer) {
-            console.log("Du har svarat rätt på fråga: ", question.id )
-        }
-        else {
-            console.log("Du har svarat fel på fråga: ", question.id)
-        }
-    })
-
-    res.json(answers)
+router.get("/questions", (req, res) => {
+  res.render("questions.njk", {
+    message: "Frågor",
+    questions
+  })
 })
+
+router.post("/end", (req, res) => {
+  const answers = req.body
+  let correctAmount = 0;
+  let totalAmount = 0;
+//   console.log(answers)
+  const results = questions.map(question => {
+    const answer = answers[question.id]
+    totalAmount += 1;
+    if (answer == question.correctAnswer){
+         correctAmount += 1;
+         console.log(correctAmount) 
+    }
+    return {
+      question: question.text,
+      questionId: question.id,
+      answer,
+      correct: answer == question.correctAnswer
+    }
+  })
+
+
+  res.render("result.njk", {
+    message: "Ditt resultat",
+    results,
+    correctAmount,
+    totalAmount
+  })
+})
+
+
+
 
 export default router

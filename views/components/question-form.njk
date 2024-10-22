@@ -5,13 +5,24 @@
         
         {% for answer in question.answers %}
         <li>
-            <input type="radio" id="{{question.id}}" name="{{question.id}}" value="{{ answer }}">
+            
+            <input type="radio" id="{{question.id}}" name="{{question.id}}" value="{{ answer }}" class="radio">
             <label for="answers">{{ answer }}</label>
+            <div class="bullet">
+                <div class="line zero"></div>
+                <div class="line one"></div>
+                <div class="line two"></div>
+                <div class="line three"></div>
+                <div class="line four"></div>
+                <div class="line five"></div>
+                <div class="line six"></div>
+                <div class="line seven"></div>
+              </div>
         </li>
         {% endfor %}
         </ul>
         {% endfor %}
 
-        <button type="submit">Skicka</button>
+        <button type="submit" id="endQuiz">Skicka</button>
     
 </form>
