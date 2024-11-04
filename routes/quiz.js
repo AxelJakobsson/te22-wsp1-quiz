@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get("/", (req, res) => {
   res.render("quiz.njk", {
-    message: "Quiz"
+    message: "Quiz" 
     })
 })
 
